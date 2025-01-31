@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Transactions;
 
-// I exceeded requirements by adding a system in the Prmopt class that allows none of the prompts to be repeated untill they have all been used. 
+// I exceeded requirements by adding a system in the Prompt class that allows none of the prompts to be repeated until they have all been used. 
 // I made a "refill" prompt list that is added to the original list when it runs out. 
 // Prompts are given in a random order
 class Program
