@@ -15,14 +15,6 @@ public class Word
 
     public void HideWord()
     {       
-        string hiddenName = "";
-
-        foreach (char letter in _word)
-        {
-            hiddenName = hiddenName + "_";
-        }    
-
-        _word = hiddenName;
         _hidden = true;
     }
 }
