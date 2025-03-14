@@ -4,11 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
         Manager manager = new Manager();
         bool Continue = true;
         while (Continue == true)
         {
-            Console.Clear();
+            Console.WriteLine();
             Console.WriteLine($"You have {manager.GetScore()} points.");
             Console.WriteLine();
             Console.WriteLine("Menu Options:");
@@ -23,12 +24,12 @@ class Program
 
             if (choice == "1")
             {
-               
+                manager.AddGoal();
             }
 
             if (choice == "2")
             {
-                
+                manager.DisplayGoal();
             }
 
             if (choice == "3")

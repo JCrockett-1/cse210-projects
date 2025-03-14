@@ -1,8 +1,8 @@
 public abstract class Goal
 {
-    private int _points;
-    private string _name;
-    private string _description;
+    protected int _points;
+    protected string _name;
+    protected string _description;
 
     public Goal(int points, string name, string description)
     {
@@ -10,8 +10,8 @@ public abstract class Goal
     }
 
     public abstract void RecordEvent();
-    public virtual void DisplayGoal()
+    public virtual string DisplayGoal()
     {
-        Console.WriteLine($"[ ] {_name} ({_description})");
+        return $"[ ] {_name} ({_description})";
     }
 }

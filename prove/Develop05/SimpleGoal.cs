@@ -12,15 +12,15 @@ public SimpleGoal(int points, string name, string description, bool isCompleted)
         
     }
 
-    public override void DisplayGoal()
+    public override string DisplayGoal()
     {
         if (_isCompleted)
         {
-            Console.WriteLine("[X] {_name} ({_description})");
+            return $"[X] {_name} ({_description})";
         }
         else
         {
-            base.DisplayGoal();
+            return base.DisplayGoal();
         }
     }
 }
