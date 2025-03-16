@@ -1,15 +1,43 @@
 using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 public class Manager
 {
     private int _score;
     private List<Goal> _goals = new List<Goal>();
+    private Random _random = new Random();
+    private List<string> messages = new List<string>
+    {
+        "Keep going, you're doing great!",
+        "One step closer to your goal!",
+        "You're building a habit of success!",
+        "Small steps lead to big results!",
+        "Amazing! Keep pushing forward!",
+        "You're unstoppable! Keep up the great work!",
+        "Success is just around the corner!",
+        "You're making great progress!",
+        "Every goal completed is a win!",
+        "Believe in yourself—you've got this!"
+    };
 
     public Manager()
     {
-
+        
     }
 
+    public void AddPoints()
+    {
+        Console.Write("What goal did you accomplish? ");
+        int goal = int.Parse(Console.ReadLine());
+        int points = _goals[goal - 1].RecordEvent();
+        _score += points;
+        if (points > 0)
+        {
+            string message = messages[_random.Next(messages.Count)];
+            Console.WriteLine($"Message: {message}");
+        }
+        Console.WriteLine($"You now have {_score} points.");
+    }
     public int GetScore()
     {
         return _score;
@@ -50,18 +78,69 @@ public class Manager
     }
     public void DisplayGoal()
     {
-        Console.WriteLine("Hey");
+        Console.WriteLine("The goals are:");
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i+1}. {_goals[i].DisplayGoal()}");
         }
     }
-    public void Save(string filename)
+    public void Save()
     {
+        Console.Write("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
 
+        string projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+        string fullPath = Path.Combine(projectDir, filename);
+
+        using (StreamWriter outputFile = new StreamWriter(fullPath))
+        {
+            outputFile.WriteLine(_score);
+            foreach (Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.SaveGoal());
+            }    
+        }
     }
-    public void Load(string filename)
+    public void Load()
     {
+        Console.WriteLine("What is the filename for the goal file?");
+        string filename = Console.ReadLine();
 
+        string projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+        string fullPath = Path.Combine(projectDir, filename);    
+
+        string[] lines = System.IO.File.ReadAllLines(fullPath);
+        _score = int.Parse(lines[0]);  
+
+        _goals.Clear();
+
+        int i = 1;
+        while (i < lines.Length)
+        {
+            string[] parts = lines[i].Split(',');
+            string type = parts[0];
+            int points = int.Parse(parts[3]);
+            string name = parts[1];
+            string description = parts[2];
+            if (type == "SimpleGoal")
+            {
+                bool isCompleted = bool.Parse(parts[4]); 
+                _goals.Add(new SimpleGoal(points, name, description, isCompleted));
+                i += 5;
+            }
+            else if (type == "EternalGoal")
+            {
+                _goals.Add(new EternalGoal(points, name, description));
+                i += 4;
+            }
+            else if (type == "ChecklistGoal")
+            {
+                int bonusPoints = int.Parse(parts[4]);
+                int targetCount = int.Parse(parts[5]);
+                int currentCount = int.Parse(parts[6]);
+                _goals.Add(new ChecklistGoal(points, name, description, bonusPoints, targetCount, currentCount));
+                i += 7;
+            }
+        }
     }
 }

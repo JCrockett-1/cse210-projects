@@ -1,5 +1,5 @@
 using System;
-
+// I exceeded requirements by adding a random encouraging message after a goal is completed! The message isn't displayed however if the user attempts to record the event with the goal already having been completed.
 class Program
 {
     static void Main(string[] args)
@@ -34,17 +34,17 @@ class Program
 
             if (choice == "3")
             {
-                
+                manager.Save();
             }
 
             if (choice == "4")
             {
-                
+                manager.Load();
             }
 
             if (choice == "5")
             {
-                
+                manager.AddPoints();
             }
 
             if (choice == "6")
