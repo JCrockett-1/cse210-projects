@@ -2,10 +2,10 @@ public class Product
 {
     private string _name;
     private string _productId;
-    private float _price;
-    private float _quantity;
+    private double _price;
+    private double _quantity;
 
-    public Product(string name, string productId, float price, float quantity)
+    public Product(string name, string productId, double price, double quantity)
     {
         _name = name;
         _productId = productId;
@@ -22,12 +22,12 @@ public class Product
     {
         return _productId;
     }
-    public float GetPrice()
+    public double GetPrice()
     {
         return _price;
     }
 
-    public float GetQuantity()
+    public double GetQuantity()
     {
         return _quantity;
     }

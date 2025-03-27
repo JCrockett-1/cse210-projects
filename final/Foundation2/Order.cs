@@ -13,11 +13,11 @@ public class Order
 
     public void GetCost()
     {
-        float totalCost = 0;
+        double totalCost = 0;
 
         foreach (Product product in _products)
         {
-            float cost = product.GetPrice() * product.GetQuantity();
+            double cost = product.GetPrice() * product.GetQuantity();
             totalCost += cost;
         }
 
