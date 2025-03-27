@@ -4,10 +4,10 @@ public class Event
     protected string _description;
     protected string _date;
     protected string _time;
-    protected string _address;
+    protected Address _address;
     protected string _eventType;
 
-    public Event(string title, string description, string date, string time, string address, string eventType)
+    public Event(string title, string description, string date, string time, Address address, string eventType)
     {
         _title = title;
         _description = description;
@@ -19,7 +19,7 @@ public class Event
 
     public void DisplayStandardMessage()
     {
-        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address}");
+        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}");
     }
 
     public void DisplayShortMessage()

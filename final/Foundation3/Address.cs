@@ -15,6 +15,6 @@ public class Address
 
     public string CompleteAddress()
     {
-        return $"{_streetAddress}\n{_city}, {_state}\n{_country}";
+        return $"{_streetAddress}, {_city}, {_state}, {_country}";
     }
 }
