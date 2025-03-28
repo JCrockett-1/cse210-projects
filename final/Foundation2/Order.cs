@@ -37,7 +37,7 @@ public class Order
     {
         foreach (Product product in _products)
         {
-            Console.WriteLine($"{product.GetName()} - {product.GetProductId()}");
+            Console.WriteLine($"{product.GetQuantity()}x {product.GetName()} - {product.GetProductId()}");
         }
     }
 

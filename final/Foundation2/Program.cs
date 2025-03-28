@@ -19,6 +19,7 @@ class Program
         order1.GetPackingLabel();
         Console.WriteLine();
         order1.GetShippingLabel();
+        Console.WriteLine();
 
         List<Product> products2 = new List<Product>();
         products2.Add(new Product("Laptop", "Electronics01", 999.99, 5.5));
@@ -35,13 +36,14 @@ class Program
         order2.GetPackingLabel();
         Console.WriteLine();
         order2.GetShippingLabel();
+        Console.WriteLine();
 
         List<Product> products3 = new List<Product>();
         products3.Add(new Product("Bread", "Bakery01", 3.49, 1.5));
         products3.Add(new Product("Milk", "Dairy02", 2.99, 1.0));
         products3.Add(new Product("Eggs", "Dairy03", 4.29, 2.0));
 
-        Address address3 = new Address("789 Grocery St", "Chicago", "IL", "USA");
+        Address address3 = new Address("123 Safari Rd", "Nairobi", "Nairobi County", "Kenya");
         Customer customer3 = new Customer("Mike Roberts", address3);
 
         Order order3 = new Order(customer3, products3);
