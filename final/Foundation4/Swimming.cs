@@ -19,7 +19,7 @@ public class Swimming : Activity
 
     public override double GetPace()
     {
-        return _length / _laps * 50 / 1000;
+        return _length / (_laps * 50 / 1000);
     }
 
 }

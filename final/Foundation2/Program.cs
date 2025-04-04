@@ -34,7 +34,7 @@ class Program
             Console.WriteLine("-Shipping Label-");
             Console.WriteLine(order.GetShippingLabel());
             Console.WriteLine();
-            Console.WriteLine($"The total cost of the order is: ${Math.Ceiling((order.GetCost()) * 100) / 100:F2}");
+            Console.WriteLine($"The total cost of the order is: ${order.GetCost():F2}");
             Console.WriteLine();
             Console.WriteLine();
         }
