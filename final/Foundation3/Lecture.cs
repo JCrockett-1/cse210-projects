@@ -10,8 +10,8 @@ public class Lecture : Event
         _eventType = "Lecture";
     }
 
-    public void DisplayFullMessage()
+    public override string GetFullMessage()
     {
-        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}\nEvent Type: {_eventType}\nSpeaker: {_speaker}\nCapacity: {_capacity}");
+        return ($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}\nEvent Type: {_eventType}\nSpeaker: {_speaker}\nCapacity: {_capacity}");
     }
 }

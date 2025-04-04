@@ -1,4 +1,4 @@
-public class Event
+public abstract class Event
 {
     protected string _title;
     protected string _description;
@@ -16,13 +16,15 @@ public class Event
         _address = address;
     }
 
-    public void DisplayStandardMessage()
+    public string GetStandardMessage()
     {
-        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}");
+        return ($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}");
     }
 
-    public void DisplayShortMessage()
+    public string GetShortMessage()
     {
-        Console.WriteLine($"Event Type: {_eventType}\nTitle: {_title}\nDate: {_date}");    
+        return ($"Event Type: {_eventType}\nTitle: {_title}\nDate: {_date}");    
     }
+
+    public abstract string GetFullMessage();
 }

@@ -11,7 +11,7 @@ public Comment(string commenterName, string commentText)
 
 public void Display()
 {
-    Console.WriteLine($"\nCommenter Name: {_commenterName}\nComment: {_commentText}");
+    Console.WriteLine($"- {_commenterName}: {_commentText}");
 }
 
 }

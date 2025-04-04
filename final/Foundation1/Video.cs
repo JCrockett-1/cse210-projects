@@ -18,11 +18,6 @@ public Video(string title, string author, int duration)
     _comments = new List<Comment>();
 }
 
-public void AddComment(Comment comment)
-{
-    _comments.Add(comment);
-}
-
 public void AddCommentList(List<Comment> comments)
 {
     _comments.AddRange(comments);
@@ -36,9 +31,10 @@ public int GetCommentCount()
 public void DisplayInfo()
 {
     Console.WriteLine($"Title: {_title}\nAuthor: {_author}\nLength: {_duration} seconds");
+    DisplayComments();
 }
 
-public void DisplayComments()
+private void DisplayComments()
 {
     foreach (Comment comment in _comments)
     {

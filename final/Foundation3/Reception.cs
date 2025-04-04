@@ -10,8 +10,8 @@ public class Reception : Event
         _eventType = "Reception";
     }
 
-    public void DisplayFullMessage()
+    public override string GetFullMessage()
     {
-        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}\nEvent Type: {_eventType}\nrsvpEmail: {_rsvpEmail}");
+        return ($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.CompleteAddress()}\nEvent Type: {_eventType}\nrsvpEmail: {_rsvpEmail}");
     } 
 }

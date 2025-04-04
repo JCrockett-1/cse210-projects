@@ -11,7 +11,7 @@ public class Order
         _products = products;
     }
 
-    public void GetCost()
+    public double GetCost()
     {
         double totalCost = 0;
 
@@ -30,19 +30,24 @@ public class Order
             totalCost += 35;
         }
         
-        Console.WriteLine($"The total cost of the order is: ${Math.Ceiling(totalCost * 100) / 100:F2}");
+        return totalCost;
     }
 
-    public void GetPackingLabel()
+    public string GetPackingLabel()
     {
+        List <string> lines = new List<string>();
+
         foreach (Product product in _products)
         {
-            Console.WriteLine($"{product.GetQuantity()}x {product.GetName()} - {product.GetProductId()}");
+            lines.Add($"{product.GetQuantity()}x {product.GetName()} ({product.GetProductId()})");
         }
+
+        string packingLabel = string.Join("\n",lines);
+        return packingLabel;
     }
 
-    public void GetShippingLabel()
+    public string GetShippingLabel()
     {
-        Console.WriteLine($"{_customer.GetName()}\n{_customer.GetAddress()}");
+        return ($"{_customer.GetName()}\n{_customer.GetAddress()}");
     }
 }
